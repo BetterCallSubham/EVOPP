@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evopp agency</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.scss">
+</head>
+<body>
+
+        <section id="home">
+            <div class="container">
+            <div class="pre-loader">
+                <div class="loader"></div>
+                <div class="loader-bg"></div>
+            </div>
+            <div class="loader-content">
+                <div class="count"><p>0</p></div>
+                <div class="copy"><p class="ml16">LOADING</p></div>
+            </div>
+            <div class="loader-2"></div>
+        </div>
+        <div class="site-content">
+            <nav>
+                <div class="logo">
+                    
+                    <a href="#"><img src="images/Evopp logo.jpg" alt="Company logo" width="40px"></a>
+                </div>
+                <div class="links">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Works</a>
+                    <a href="#">Contact</a>
+                </div>
+            </nav>
+            <div class="header">
+                <h1>E</h1>
+                <h1>V</h1>
+                <h1>O</h1>
+                <h1>P</h1>
+                <h1>P</h1>
+            </div>
+            <!-- <div class="sgn">
+                <h1>Make It EASY<br> do you bleed <br> You will</h1>
+            </div> -->
+            <footer>
+                <div class="footer-copy">
+                    <p>Evopp is a freelance agency that will help you to reach your outer limit</p>
+                </div>
+                <div class="footer-nav">
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
+            </footer>
+        </div>
+        </section>
+    
+       
+       
+
+    
+
+     
+     
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+    <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+    
+    <script>
+        function startLoader() {
+            
+            let counterElement = document.querySelector(".count p");
+            let currentValue = 0;
+
+            function updateCounter() {
+                if (currentValue < 100) {
+                    let increment = Math.floor(Math.random() * 10) + 1;
+                    currentValue = Math.min(currentValue + increment, 100);
+                    counterElement.textContent = currentValue;
+
+                    let delay = Math.floor(Math.random() * 200) + 25;
+                    setTimeout(updateCounter, delay);
+                }
+            }
+
+            updateCounter();
+        }
+    
+        startLoader();
+    
+        gsap.to(".count", { opacity: 0, delay: 3.5, duration: 0.5 });
+    
+        let textWrapper = document.querySelector(".ml16");
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    
+        var timeline = anime.timeline({
+            loop: false
+        });
+        timeline.add({
+            targets: '.ml16 .letter',
+            translateY: [-100, 0],
+            easing: "easeOutExpo",
+            duration: 1500,
+            delay: (el, i) => 30 * i
+        }).add({
+            targets: '.ml16 .letter',
+            translateY: [0, 100],
+            easing: "easeOutExpo",
+            duration: 3000,
+            delay: (el, i) => 2000 + 30 * i
+        });
+    
+        gsap.to(".pre-loader", {
+            scale: 0.5,
+            ease: "power4.inOut",
+            duration: 1.5,
+            delay: 3,
+            
+        });
+    
+        gsap.to(".loader", {
+            height: "0",
+            ease: "power4.inOut",
+            duration: 1.5,
+            delay: 3.6,
+            
+        });
+    
+        gsap.to(".loader-bg", {
+            height: "0",
+            ease: "power4.inOut",
+            duration: 1.5,
+            delay: 4
+        });
+        
+        gsap.to(".loader-2", {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+        ease: "power4.inOut",
+        duration: 1.5,
+        delay: 3.4
+    })
+
+    gsap.from(".header h1",{
+        y: 200,
+        ease: "power4.inOut",
+        duration: 1.5,
+        delay: 3.75,
+        stagger: 0.05
+    })
+
+    gsap.from(".sgn h1",{
+        y: 200,
+        ease: "power4.inOut",
+        duration: 1.9,
+        delay: 3.9,
+        stagger: 0.05
+    })
+    
+
+
+   
+     const cursorDot = document.querySelector("[data-cursor-dot]");
+    const cursorOutline = document.querySelector("[data-cursor-outline]");
+
+    window.addEventListener("mousemove", function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        cursorOutline.style.left = `${posX}px`;
+        cursorOutline.style.top = `${posY}px`
+
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`,
+        },  { duration: 500, fill: "forwards"});
+        cursorDot.animate({
+            left: `${posX}px`,
+            top: `${posY}px`,
+        },  { duration: 500, fill: "forwards"});
+
+        var pos = document.body;
+pos.addEventListener("mousemove", e =>{
+    pos.style.setProperty('--X', e.clientX + "px");
+    pos.style.setProperty('--Y', e.clientY + "px");
+});
+
+var pos = document.body;
+pos.addEventListener("mousemove", e => {
+    pos.style.setProperty('--X', (e.clientX / window.innerWidth) * 100 + "%");
+    pos.style.setProperty('--Y', (e.clientY / window.innerHeight) * 100 + "%");
+ })
+    });
+    
+
+    
+
+    cursorScale = document.querySelectorAll('.cursor-scale')
+        const span = document.querySelector('.hover-btn2')
+        const overplay = document.querySelector('.overlay')
+
+        window.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const x = Math.round((clientX / window.innerWidth) * 100);
+            const y = Math.round((clientY / window.innerHeight) * 100);
+
+            gsap.to(overplay, {
+                '--x': `${x}%`, 
+                '--y': `${y}%`,
+                duration: 0.3,
+                ease: 'sine.out'
+            })
+        })
+    
+
+
+    
+       
+    
+
+   
+    
+
+</script>
+</body>
+</html>
